@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Twenty Seventeen package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-04-20 08:31:03+0000\n"
+"PO-Revision-Date: 2019-05-02 04:59:18+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -34,7 +34,7 @@ msgstr "Blog Sidebar"
 #: template-parts/navigation/navigation-top.php:31
 #: template-parts/header/site-branding.php:34
 msgid "Scroll down to content"
-msgstr "Scroll xuống nội dung"
+msgstr "Kéo xuống nội dung"
 
 #: functions.php:179
 msgctxt "Theme starter content"
@@ -246,7 +246,7 @@ msgstr "Trang:"
 msgid "Menu"
 msgstr "Menu"
 
-#: header.php:27
+#: header.php:28
 msgid "Skip to content"
 msgstr "Chuyển đến phần nội dung"
 

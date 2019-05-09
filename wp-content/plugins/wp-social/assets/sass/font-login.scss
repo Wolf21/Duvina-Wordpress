@@ -1,0 +1,103 @@
+@import './variables';
+
+#loginform {
+    #XS_social_login_div{
+        display:none;
+    }
+    #XS_social_login_div_login {
+        display: -webkit-box;
+    }
+}
+
+/**
+* login button global css section
+*/
+ #XS_social_login_div{
+	clear: both;
+    display: -webkit-box;
+	width: 100%;
+	max-width: 300px;
+	margin: 0 auto;
+}
+#XS_social_login_div_login {
+    clear: both;
+    position: relative;
+    padding-top: 25px;
+    width: 100%;
+    // max-width: 250px;
+	margin: 0 auto;
+	display: -webkit-box;
+}
+
+
+._login_button_style__ul {
+    width: 100%;
+    @each $name, $color in $social {
+        .#{$name} {
+            .social-icon {
+                background-color: $color;
+            }
+            .login-button-text {
+                color: $color;
+            }
+            &:hover {
+                > a {
+                    background-color: $color;
+                }
+                .social-icon {
+                    background-color: darken($color: $color, $amount: 5);
+                }
+            }
+        }
+    }
+    list-style: none;
+    > li {
+        &:not(:last-child) {
+            margin-bottom: 20px;
+        }
+        > a {
+            display: block;
+            text-decoration: none;
+            box-shadow: 0px 15px 50px 0px rgba(0, 0, 0, 0.07);
+            padding: 10px;
+            border-radius: 30px;
+            transition: background .4s cubic-bezier(0.47, 0, 0.75, 0.72), transform .6s cubic-bezier(0.39, 0.58, 0.57, 1);
+            &:hover {
+                .login-button-text {
+                    color: #ffffff;
+                }
+                transform: scale(.95);
+            }
+            .xs-social-icon {
+                display: flex;
+                align-items: center;
+            }
+            .social-icon {
+                @include round(40px);
+                transition: background-color .4s ease;
+                > img {
+                    max-width: 12px;
+                }
+            }
+            .login-button-text {
+                font-size: 14px;
+                font-weight: 500;
+                margin-left: 15px;
+                transition: color .4s ease;
+            }
+        }
+    }
+    .xs-li-style2 {
+        display: inline-block;
+        &:not(:last-child) {
+            margin-right: 5px;
+        }
+        > a {
+            display: inline-block;
+            padding: 0px;
+            &:hover {
+                transform: scale(1);
+            }
+        }
+    }
+}

@@ -1,0 +1,171 @@
+#loginform #XS_social_login_div {
+  display: none; }
+
+#loginform #XS_social_login_div_login {
+  display: -webkit-box; }
+
+/**
+* login button global css section
+*/
+#XS_social_login_div {
+  clear: both;
+  display: -webkit-box;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto; }
+
+#XS_social_login_div_login {
+  clear: both;
+  position: relative;
+  padding-top: 25px;
+  width: 100%;
+  margin: 0 auto;
+  display: -webkit-box; }
+
+._login_button_style__ul {
+  width: 100%;
+  list-style: none; }
+  ._login_button_style__ul .facebook .social-icon {
+    background-color: #3b5998; }
+  ._login_button_style__ul .facebook .login-button-text {
+    color: #3b5998; }
+  ._login_button_style__ul .facebook:hover > a {
+    background-color: #3b5998; }
+  ._login_button_style__ul .facebook:hover .social-icon {
+    background-color: #344e86; }
+  ._login_button_style__ul .twitter .social-icon {
+    background-color: #1da1f2; }
+  ._login_button_style__ul .twitter .login-button-text {
+    color: #1da1f2; }
+  ._login_button_style__ul .twitter:hover > a {
+    background-color: #1da1f2; }
+  ._login_button_style__ul .twitter:hover .social-icon {
+    background-color: #0d95e8; }
+  ._login_button_style__ul .dribbble .social-icon {
+    background-color: #ea4c89; }
+  ._login_button_style__ul .dribbble .login-button-text {
+    color: #ea4c89; }
+  ._login_button_style__ul .dribbble:hover > a {
+    background-color: #ea4c89; }
+  ._login_button_style__ul .dribbble:hover .social-icon {
+    background-color: #e7357a; }
+  ._login_button_style__ul .pinterest .social-icon {
+    background-color: #bd081c; }
+  ._login_button_style__ul .pinterest .login-button-text {
+    color: #bd081c; }
+  ._login_button_style__ul .pinterest:hover > a {
+    background-color: #bd081c; }
+  ._login_button_style__ul .pinterest:hover .social-icon {
+    background-color: #a50718; }
+  ._login_button_style__ul .instagram .social-icon {
+    background-color: #e8715c; }
+  ._login_button_style__ul .instagram .login-button-text {
+    color: #e8715c; }
+  ._login_button_style__ul .instagram:hover > a {
+    background-color: #e8715c; }
+  ._login_button_style__ul .instagram:hover .social-icon {
+    background-color: #e55e46; }
+  ._login_button_style__ul .github .social-icon {
+    background-color: #dd4b39; }
+  ._login_button_style__ul .github .login-button-text {
+    color: #dd4b39; }
+  ._login_button_style__ul .github:hover > a {
+    background-color: #dd4b39; }
+  ._login_button_style__ul .github:hover .social-icon {
+    background-color: #d73925; }
+  ._login_button_style__ul .linkedin .social-icon {
+    background-color: #0077b5; }
+  ._login_button_style__ul .linkedin .login-button-text {
+    color: #0077b5; }
+  ._login_button_style__ul .linkedin:hover > a {
+    background-color: #0077b5; }
+  ._login_button_style__ul .linkedin:hover .social-icon {
+    background-color: #00669c; }
+  ._login_button_style__ul .vkontakte .social-icon {
+    background-color: #1ab7ea; }
+  ._login_button_style__ul .vkontakte .login-button-text {
+    color: #1ab7ea; }
+  ._login_button_style__ul .vkontakte:hover > a {
+    background-color: #1ab7ea; }
+  ._login_button_style__ul .vkontakte:hover .social-icon {
+    background-color: #14a7d7; }
+  ._login_button_style__ul .reddit .social-icon {
+    background-color: #009cde; }
+  ._login_button_style__ul .reddit .login-button-text {
+    color: #009cde; }
+  ._login_button_style__ul .reddit:hover > a {
+    background-color: #009cde; }
+  ._login_button_style__ul .reddit:hover .social-icon {
+    background-color: #008ac5; }
+  ._login_button_style__ul .skype .social-icon {
+    background-color: #00aff0; }
+  ._login_button_style__ul .skype .login-button-text {
+    color: #00aff0; }
+  ._login_button_style__ul .skype:hover > a {
+    background-color: #00aff0; }
+  ._login_button_style__ul .skype:hover .social-icon {
+    background-color: #009cd7; }
+  ._login_button_style__ul .wordpress .social-icon {
+    background-color: #d54e21; }
+  ._login_button_style__ul .wordpress .login-button-text {
+    color: #d54e21; }
+  ._login_button_style__ul .wordpress:hover > a {
+    background-color: #d54e21; }
+  ._login_button_style__ul .wordpress:hover .social-icon {
+    background-color: #bf461e; }
+  ._login_button_style__ul > li:not(:last-child) {
+    margin-bottom: 20px; }
+  ._login_button_style__ul > li > a {
+    display: block;
+    text-decoration: none;
+    -webkit-box-shadow: 0px 15px 50px 0px rgba(0, 0, 0, 0.07);
+    box-shadow: 0px 15px 50px 0px rgba(0, 0, 0, 0.07);
+    padding: 10px;
+    border-radius: 30px;
+    -webkit-transition: background 0.4s cubic-bezier(0.47, 0, 0.75, 0.72), -webkit-transform 0.6s cubic-bezier(0.39, 0.58, 0.57, 1);
+    transition: background 0.4s cubic-bezier(0.47, 0, 0.75, 0.72), -webkit-transform 0.6s cubic-bezier(0.39, 0.58, 0.57, 1);
+    -o-transition: background 0.4s cubic-bezier(0.47, 0, 0.75, 0.72), transform 0.6s cubic-bezier(0.39, 0.58, 0.57, 1);
+    transition: background 0.4s cubic-bezier(0.47, 0, 0.75, 0.72), transform 0.6s cubic-bezier(0.39, 0.58, 0.57, 1);
+    transition: background 0.4s cubic-bezier(0.47, 0, 0.75, 0.72), transform 0.6s cubic-bezier(0.39, 0.58, 0.57, 1), -webkit-transform 0.6s cubic-bezier(0.39, 0.58, 0.57, 1); }
+    ._login_button_style__ul > li > a:hover {
+      -webkit-transform: scale(0.95);
+      -ms-transform: scale(0.95);
+      transform: scale(0.95); }
+      ._login_button_style__ul > li > a:hover .login-button-text {
+        color: #ffffff; }
+    ._login_button_style__ul > li > a .xs-social-icon {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center; }
+    ._login_button_style__ul > li > a .social-icon {
+      height: 40px;
+      width: 40px;
+      line-height: 40px;
+      border-radius: 20px;
+      text-align: center;
+      -webkit-transition: background-color .4s ease;
+      -o-transition: background-color .4s ease;
+      transition: background-color .4s ease; }
+      ._login_button_style__ul > li > a .social-icon > img {
+        max-width: 12px;  display: inline-block;}
+    ._login_button_style__ul > li > a .login-button-text {
+      font-size: 14px;
+      font-weight: 500;
+      margin-left: 15px;
+      -webkit-transition: color .4s ease;
+      -o-transition: color .4s ease;
+      transition: color .4s ease; }
+  ._login_button_style__ul .xs-li-style2 {
+    display: inline-block; }
+    ._login_button_style__ul .xs-li-style2:not(:last-child) {
+      margin-right: 5px; }
+    ._login_button_style__ul .xs-li-style2 > a {
+      display: inline-block;
+      padding: 0px; }
+      ._login_button_style__ul .xs-li-style2 > a:hover {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        transform: scale(1); }

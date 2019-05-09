@@ -1,0 +1,22 @@
+$social: (
+    facebook: rgba(#3b5998 , 1),
+    twitter: rgba(#1da1f2, 1),
+    dribbble: #ea4c89,
+    pinterest: #bd081c,
+    instagram: #e8715c,
+    github: #dd4b39,
+    linkedin: #0077b5,
+    vkontakte: #1ab7ea,
+    reddit: #009cde,
+    skype: #00aff0,
+    wordpress: #d54e21,
+);
+
+
+@mixin round($height: $height, $width: $height, $lineHeight: $height) {
+    height: $height;
+    width: $width;
+    line-height: $lineHeight;
+    border-radius: ($height / 2);
+    text-align: center;
+}
