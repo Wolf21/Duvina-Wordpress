@@ -4,9 +4,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * Plugin Name: Wp Social Login
  * Plugin URI: https://plugindev.xpeedstudio.com/social/
  * Description: Wp Social Login System for Facebook, Twitter, Linkedin, Dribble, Pinterest, Wordpress, Instagram, GitHub, Vkontakte and Reddit login from WordPress site.
- * Author: Agencify
- * Version: 1.1
- * Author URI: https://agencify.com/
+ * Author: wpmet
+ * Version: 1.2.2
+ * Author URI: https://wpmet.com/
  * Text Domain: wslu-social-login
  * License: GPL2+
  * Domain Path: /languages/

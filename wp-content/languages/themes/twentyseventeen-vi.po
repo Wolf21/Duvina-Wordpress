@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Twenty Seventeen package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-05-02 04:59:18+0000\n"
+"PO-Revision-Date: 2019-05-10 05:34:17+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -216,6 +216,10 @@ msgctxt "label"
 msgid "Search for:"
 msgstr "Tìm kiếm:"
 
+#: search.php:19
+msgid "Search Results for: %s"
+msgstr "Kết quả tìm kiếm cho từ khóa: %s"
+
 #. translators: %s: Name of current post
 #: template-parts/page/content-front-page-panels.php:45
 #: template-parts/page/content-front-page.php:42
@@ -233,6 +237,11 @@ msgstr "Tông màu tối"
 #: inc/back-compat.php:39 inc/back-compat.php:52 inc/back-compat.php:70
 msgid "Twenty Seventeen requires at least WordPress version 4.7. You are running version %s. Please upgrade and try again."
 msgstr "Giao diện Twenty Seventeen yêu cầu phiên bản WordPress tối thiểu 4.7. Bạn đang sử dụng phiên bản %s. Vui lòng nâng cấp và thử lại."
+
+#. translators: %s: Name of current post
+#: inc/template-tags.php:117
+msgid "Edit<span class=\"screen-reader-text\"> \"%s\"</span>"
+msgstr "Sửa<span class=\"screen-reader-text\"> \"%s\"</span>"
 
 #: template-parts/page/content-page.php:26
 #: template-parts/post/content-audio.php:91 template-parts/post/content.php:64
@@ -273,6 +282,19 @@ msgstr "Menu mạng xã hội cuối trang"
 #: comments.php:82
 msgid "Comments are closed."
 msgstr "Không cho phép bình luận."
+
+#. translators: 1: number of comments, 2: post title
+#: comments.php:41
+msgctxt "comments title"
+msgid "%1$s Reply to &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s Replies to &ldquo;%2$s&rdquo;"
+msgstr[0] "%1$s Trả lời &ldquo;%2$s&rdquo;"
+
+#. translators: %s: post title
+#: comments.php:37
+msgctxt "comments title"
+msgid "One Reply to &ldquo;%s&rdquo;"
+msgstr "Một trả lời cho &ldquo;%s&rdquo;"
 
 #: archive.php:50 search.php:47 index.php:54
 msgid "Page"
