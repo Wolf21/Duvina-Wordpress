@@ -27,3 +27,4 @@ function custom_login_form(){
 window.addEventListener('load', function () {
 	custom_login_form();
 });
+

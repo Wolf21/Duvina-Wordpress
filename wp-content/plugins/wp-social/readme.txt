@@ -1,6 +1,6 @@
-=== Wp Social Login and Register (WordPress, Woocommerce, Buddypress, Facebook, Twitter, Linkedin, Dribble, Pinterest, Instagram, Reddit, Vkontakte) ===
+=== Wp Social Login and Register, Social share, social Counter ===
 Contributors: Ataurr, wpmet, emrnco, golaphazi
-Tags: Wp Social login, WordPress Social login and register, Woocommerce Social login and register, buddypress Social login and register, Facebook login, Twitter login, Linkedin login, Dribble login, Pinterest login, Wordpress login, Instagram login, GitHub login, Vkontakte login, Reddit login,  
+Tags: Social login, WordPress Social login and register, Social share,  Social counter, Social,  woocommerce social login and register
 Requires at least: 4.6
 Tested up to: 5.2
 Stable tag: 1.1
@@ -8,12 +8,23 @@ Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Wp Social Login System for WordPress Social login and register, Woocommerce Social login and register, buddypress Social login and register, Facebook login, Twitter login, Linkedin login, Dribble login, Pinterest login, Wordpress login, Instagram login,  login from your WordPress site.
+Wp Social comes with social login register, social share and social counter. This is for your all in one social solution for your website. The wp social plugin will cover all the for your social services. Also,  work with woocommerce and other most popular plugins and work fine with any theme.
+
+
 
 == Description ==
 
+Wp Social is an ultimate social login,  social counter and social share plugin with easily configures with enabling and disable from admin. With social login, Your website visitor selects what is easy for him to register as a user on your website. 
+Wp social plugin have the option to share enables your website users to share the content over Facebook, Twitter, LinkedIn, Whatsapp, Tumblr, Pinterest, Reddit etc. Your visitor shares the post or content from your website to the most popular social platform like facebook,  twitter, Pinterest so on.
 
-Wp Social Login is an ultimate social login plugin with easily configures with enabling and disable from admin. Your website visitor selects what is easy for him to register as a user in your website.
+Wp social also have social counter features.  This will give you the options and widgets to show social accounts fans, subscribers and followers number on your website!
+This will show how many posts subscribe, likes and follow by your social fans from your website.
+
+We have extensive options to activate, from your social media details and select one of the readymade designs from beautifully designed templates.
+
+You can use either widget or shortcode to display your social media counter and shares right on your website in your desired locations!
+
+
 
 ###SUPPORT###
 
@@ -37,7 +48,6 @@ Wp Social Login System for WordPress Social login and register, Woocommerce Soci
 * Twitter Login register
 * Linkedin Login register
 * Dribble Login register
-* Pinterest Login register
 * Instagram Login register
 * Reddit Login register
 * Vkontakte Login register

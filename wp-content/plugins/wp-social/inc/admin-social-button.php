@@ -109,7 +109,55 @@ class xs_button_in_login_page{
 		endswitch;
 		
 	}
-	
+	/**
+	* Method Name : xs_login_form_login_wp
+	* Method Details : For added social button in wp-login page
+	* 
+	* @params : String $type. 
+	* @return : void
+	*
+	* @since : 1.0
+	*/
+	public static function wfp_login_form_login_wp($type = 'wfp_login_form_end'){
+		add_action( 'login_enqueue_scripts', 'xs_my_global_stylesheet' );
+		switch($type):
+			case 'wfp_login_form_before_outer':
+				//add_action( 'login_enqueue_scripts', 'xs_my_login_stylesheet' );
+				add_action( 'wfp_login_form_before_outer', 'xs_button_in_login_page::xs_addLoginButton' );
+				break;
+			case 'wfp_login_form_after_outer':
+				//add_action( 'login_enqueue_scripts', 'xs_my_login_stylesheet' );
+				add_action( 'wfp_login_form_after_outer', 'xs_button_in_login_page::xs_addLoginButton' );
+				break;
+			case 'wfp_login_form_before_inner':
+				//add_action( 'login_enqueue_scripts', 'xs_my_login_stylesheet' );	
+				add_action( 'wfp_login_form_before_inner', 'xs_button_in_login_page::xs_addLoginButton' );
+				break;
+			case 'wfp_login_form_after_inner':
+				add_action( 'wfp_login_form_after_inner', 'xs_button_in_login_page::xs_addLoginButton');
+				break;
+			case 'wfp_login_form_start':
+				add_action( 'wfp_login_form_start', 'xs_button_in_login_page::xs_addLoginButton' );
+				break;
+			case 'wfp_login_form_end':
+				add_action( 'wfp_login_form_end', 'xs_button_in_login_page::xs_addLoginButton' );
+				break;
+			case 'wfp_login_form_button_before':
+				add_action( 'wfp_login_form_button_before', 'xs_button_in_login_page::xs_addLoginButton' );
+				break;
+			case 'wfp_login_form_button_after':
+				add_action( 'wfp_login_form_button_after', 'xs_button_in_login_page::xs_addLoginButton' );
+				break;	
+			case 'wfp_login_form_message':
+				add_action( 'wfp_login_form_message', 'xs_button_in_login_page::xs_addLoginButton' );
+				break;	
+			default:
+				//add_action( 'login_enqueue_scripts', 'xs_my_login_stylesheet' );
+				add_filter( 'wfp_login_form_button_after', 'xs_button_in_login_page::xs_addLoginButton' );
+				break;
+		endswitch;
+		
+	}
 	/**
 	* Method Name : xs_login_form_comment_wp
 	* Method Details : For added social button in wp-comment page
@@ -290,6 +338,19 @@ if(class_exists('xs_button_in_login_page')){
 		//xs_button_in_login_page::$showFilter = 'hide';
 		$enable_wp_register_type = isset($xs_login_admin_page['wp_register_page']['data']) ? $xs_login_admin_page['wp_register_page']['data'] : 'register_form';
 		xs_button_in_login_page::xs_login_form_register_wp($enable_wp_register_type);
+	}	
+	
+	/**
+	* Variable Name : $enable_wfp_login
+	* Variable Type : int()
+	* @return : int $enable_wp_register Enable 0,1
+	*
+	* @since : 1.0
+	*/
+	$enable_wfp_login = isset($xs_login_admin_page['wfp_fund_login_page']['enable']) ? $xs_login_admin_page['wfp_fund_login_page']['enable'] : 0;
+	if($enable_wfp_login){
+		$enable_wfp_login_type = isset($xs_login_admin_page['wfp_fund_login_page']['data']) ? $xs_login_admin_page['wfp_fund_login_page']['data'] : 'wfp_login_form_end';
+		xs_button_in_login_page::wfp_login_form_login_wp($enable_wfp_login_type);
 	}	
 	
 	/**

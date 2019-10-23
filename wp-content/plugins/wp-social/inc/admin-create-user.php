@@ -112,6 +112,7 @@ if(strlen($typeSocial) > 0){
 *
 * @since : 1.0
 */
+$code = isset($_GET['code']) ? $_GET['code'] : '';
 if(strlen($socialType) > 0){
 	
 	try{
@@ -120,109 +121,78 @@ if(strlen($socialType) > 0){
 	    $adapter = $hybridauth->authenticate($socialType); 
 
 	    $isConnected = $adapter->isConnected();
-	 	
-		$getProfile = $adapter->getUserProfile();
-		
-		if(is_object($getProfile) AND sizeof($getProfile) > 0){
-			session_unset($_SESSION['xs_social_login_ref_url']);
+	 	if($isConnected):
+			$getProfile = $adapter->getUserProfile();
 			
-			$display_name = '';
-			$user_name 	= '';
-			$user_email = '';
-			$insertData = [];
-			if( isset($getProfile->firstName) ){
-				$insertData['user_nicename'] = $getProfile->firstName;
-				$user_name 	.= str_replace(' ', '-', strtolower(trim($getProfile->firstName)));
-			}
-			if(isset($getProfile->identifier)){
-				$user_name 	.= $getProfile->identifier.'-';
-			}
-			$user_name 	.= $typeSocial;
-			
-			if( isset($getProfile->displayName) ){
-				$insertData['display_name'] = $getProfile->displayName;
-			}
-
-			if( isset($getProfile->email) ){
-				$user_email =  $getProfile->email;
-				$insertData['user_email'] = $user_email;
-			}
-
-			$insertData['user_login'] = $user_name;
-			$insertData['user_pass'] = wp_hash_password('123456');
-
-			$user_id = username_exists( $user_name );
-			
-			/**
-			* Variable Name : $setting_data
-			* Variable Type : Array
-			* @return : array() $setting_data .  Get array from socail global setting data "xs_global_setting_data"
-			*
-			* @since : 1.0
-			*/
-			$setting_data = get_option('xs_global_setting_data');
-			
-			/**
-			* Variable Name : $redirectUrlEnable
-			* Variable Type : int()
-			* @return : int $redirectUrlEnable Enable 0,1
-			*
-			* @since : 1.0
-			*/
-			$redirectUrlEnable = isset($setting_data['custom_login_url']['enable']) ? $setting_data['custom_login_url']['enable'] : 0;
-
-			/**
-			* Variable Name : $redirectUrl
-			* Variable Type : string()
-			* @return : string $redirectUrl custom URL
-			*
-			* @since : 1.0
-			*/
-			$redirectUrl = isset($setting_data['custom_login_url']['data']) ? $setting_data['custom_login_url']['data'] : $currentURL;
-			
-			
-			/**
-			* check user already exists
-			*
-			* @since : 1.0
-			*/
-			if ( $user_id ) {
-				$user_nameD = xs_login_get_user_data($user_name, 'user_login');
-				$user_id = xs_login_get_user_data($user_name, 'ID');
-				wp_set_password('123456', $user_id);
-				$password = '123456';
+			if(is_object($getProfile) AND sizeof($getProfile) > 0){
+				session_unset($_SESSION['xs_social_login_ref_url']);
 				
-				if(xs_user_login($user_nameD, $password)){
-					if($redirectUrlEnable == 1){
-						if ( wp_redirect( $redirectUrl ) ) {
-							exit;
-						}
-					}else{
-						if ( wp_redirect( $currentURL ) ) {
-							exit;
-						}
-					}
-				}else{
-					die('System Error for Login!');
+				$display_name = '';
+				$user_name 	= '';
+				$user_email = '';
+				$insertData = [];
+				if( isset($getProfile->firstName) ){
+					$insertData['user_nicename'] = $getProfile->firstName;
+					$user_name 	.= str_replace(' ', '-', strtolower(trim($getProfile->firstName)));
 				}
-			/**
-			* when user already exixts then direct login by this user
-			*
-			* @since : 1.0
-			*/	
-			}else{
-				$checkUser = xs_login_create_user($insertData);
-				if($checkUser == 0){
-					// exits user data new
-					if(strlen($user_email) == 0){
-						$user_nameD 	= xs_login_get_user_data($user_name, 'user_login');
-						$user_id 	= xs_login_get_user_data($user_name, 'ID');
-					}else{
-						$user_nameD 	= xs_login_get_user_data_email($user_email, 'user_login');
-						$user_id 	= xs_login_get_user_data_email($user_email, 'ID');
-					}
+				if(isset($getProfile->identifier)){
+					$user_name 	.= $getProfile->identifier.'-';
+				}
+				$user_name 	.= $typeSocial;
+				
+				if( isset($getProfile->displayName) ){
+					$insertData['display_name'] = $getProfile->displayName;
+				}
+
+				if( isset($getProfile->email) ){
+					$user_email =  $getProfile->email;
+					$insertData['user_email'] = $user_email;
+				}
+
+				$insertData['user_login'] = $user_name;
+				$insertData['user_pass'] = wp_hash_password('123456');
+
+				$user_id = username_exists( $user_name );
+				
+				/**
+				* Variable Name : $setting_data
+				* Variable Type : Array
+				* @return : array() $setting_data .  Get array from socail global setting data "xs_global_setting_data"
+				*
+				* @since : 1.0
+				*/
+				$setting_data = get_option('xs_global_setting_data');
+				
+				/**
+				* Variable Name : $redirectUrlEnable
+				* Variable Type : int()
+				* @return : int $redirectUrlEnable Enable 0,1
+				*
+				* @since : 1.0
+				*/
+				$redirectUrlEnable = isset($setting_data['custom_login_url']['enable']) ? $setting_data['custom_login_url']['enable'] : 0;
+
+				/**
+				* Variable Name : $redirectUrl
+				* Variable Type : string()
+				* @return : string $redirectUrl custom URL
+				*
+				* @since : 1.0
+				*/
+				$redirectUrl = isset($setting_data['custom_login_url']['data']) ? $setting_data['custom_login_url']['data'] : $currentURL;
+				
+				
+				/**
+				* check user already exists
+				*
+				* @since : 1.0
+				*/
+				if ( $user_id ) {
+					$user_nameD = xs_login_get_user_data($user_name, 'user_login');
+					$user_id = xs_login_get_user_data($user_name, 'ID');
 					wp_set_password('123456', $user_id);
 					$password = '123456';
+					
 					if(xs_user_login($user_nameD, $password)){
 						if($redirectUrlEnable == 1){
 							if ( wp_redirect( $redirectUrl ) ) {
@@ -233,30 +203,62 @@ if(strlen($socialType) > 0){
 								exit;
 							}
 						}
+					}else{
+						die('System Error for Login!');
 					}
+				/**
+				* when user already exixts then direct login by this user
+				*
+				* @since : 1.0
+				*/	
 				}else{
-					// insert user data new.
-					wp_set_password('123456', $checkUser);
-					$password = '123456';
-					if(xs_user_login($user_name, $password)){
-						if($redirectUrlEnable == 1){
-							if ( wp_redirect( $redirectUrl ) ) {
-								exit;
-							}
+					$checkUser = xs_login_create_user($insertData);
+					if($checkUser == 0){
+						// exits user data new
+						if(strlen($user_email) == 0){
+							$user_nameD 	= xs_login_get_user_data($user_name, 'user_login');
+							$user_id 	= xs_login_get_user_data($user_name, 'ID');
 						}else{
-							if ( wp_redirect( $currentURL ) ) {
-								exit;
+							$user_nameD 	= xs_login_get_user_data_email($user_email, 'user_login');
+							$user_id 	= xs_login_get_user_data_email($user_email, 'ID');
+						}
+						wp_set_password('123456', $user_id);
+						$password = '123456';
+						if(xs_user_login($user_nameD, $password)){
+							if($redirectUrlEnable == 1){
+								if ( wp_redirect( $redirectUrl ) ) {
+									exit;
+								}
+							}else{
+								if ( wp_redirect( $currentURL ) ) {
+									exit;
+								}
+							}
+						}
+					}else{
+						// insert user data new.
+						wp_set_password('123456', $checkUser);
+						$password = '123456';
+						if(xs_user_login($user_name, $password)){
+							if($redirectUrlEnable == 1){
+								if ( wp_redirect( $redirectUrl ) ) {
+									exit;
+								}
+							}else{
+								if ( wp_redirect( $currentURL ) ) {
+									exit;
+								}
 							}
 						}
 					}
-				}
-				
-				
+					
+					
+				}	
+			}else{
+				die('System Error for Callback!');
 			}	
-		}else{
-			die('System Error for Callback!');
-		}	
 		
+		endif;
 		
 	    $adapter->disconnect();
 	}

@@ -14,5 +14,12 @@ require(WSLU_LOGIN_PLUGIN.'/inc/admin-create-widget.php');
 require(WSLU_LOGIN_PLUGIN.'/inc/admin-create-shortcode.php');
 
 require(WSLU_LOGIN_PLUGIN.'/inc/admin-rest-api.php');
+require(WSLU_LOGIN_PLUGIN.'/inc/share.php');
+require(WSLU_LOGIN_PLUGIN.'/inc/share-widget.php');
 
-require( WSLU_LOGIN_PLUGIN.'lib/vendor/autoload.php');
+require(WSLU_LOGIN_PLUGIN.'lib/counter/counters-api.php');
+require(WSLU_LOGIN_PLUGIN.'/inc/counter.php');
+
+require(WSLU_LOGIN_PLUGIN.'/inc/counter-widget.php');
+
+require(WSLU_LOGIN_PLUGIN.'lib/vendor/autoload.php');

@@ -12,10 +12,10 @@ if($message_provider == 'show'){?>
 
 
 <div class="xs-provider-section">
-	<h1 class="ekit_section-title"><?php echo esc_html__('Providers', 'wslu-social-login');?></h1>
+	<h1 class="ekit_section-title"><?php echo esc_html__('Login Providers', 'wslu-social-login');?></h1>
 </div>
 
-<form action="<?php echo esc_url(admin_url().'admin.php?page=wslu_providers');?>" name="xs_provider_submit_form" method="post" id="xs_provider_form">
+<form action="<?php echo esc_url(admin_url().'admin.php?page=wslu_global_setting&tab=wslu_providers');?>" name="xs_provider_submit_form" method="post" id="xs_provider_form">
 	<div class="xs-social-block-wraper">
 		<ul class="xs-social-block">
 		<?php
@@ -26,7 +26,7 @@ if($message_provider == 'show'){?>
 				<div class="xs-block-header" data-type="modal-trigger" data-target="example-modal-<?php echo $keyType;?>">
 					<span class="drag-icon"></span>
 					<div class="xs-social-icon">
-						<img src="<?php echo esc_url(WSLU_LOGIN_PLUGIN_URL.'assets/images/social-logo/'.$keyType.'-logo.svg') ?>" alt="<?php echo esc_html($valueType);?>">
+						<span class="met-social met-social-<?php echo $keyType;?>"></span>
 					</div>
 					<h2 class="xs-social-icon-title"><?php echo esc_html($valueType, 'wslu-social-login');?></h2>
 				</div>
@@ -122,8 +122,9 @@ if($message_provider == 'show'){?>
 													<li><?php echo __('Go to <a href="'.esc_url('https://developer.dribbble.com/v1/oauth/').'" target="_blank">https://developer.dribbble.com/v1/oauth/</a>');?>  </li>
 												<?php }else if($keyTypeAll == 'twitter'){?>
 													<li><?php echo __('Go to <a href="'.esc_url('https://developer.twitter.com/en/apps/create').'" target="_blank">https://developer.twitter.com/en/apps/create</a>');?>  </li>
+												<?php }else if($keyTypeAll == 'google'){?>
+													<li><?php echo __('Go to <a href="'.esc_url('https://console.developers.google.com/apis/').'" target="_blank">https://console.developers.google.com/apis/</a>');?>  </li>
 												<?php }?>
-
 												<li> <?php echo esc_html__('Log in with your '.$valueTypeAll.' ( if you are not logged in )', 'wslu-social-login');?>
 												</li>
 												<li> <?php echo esc_html__('Click on "Add New App" button ', 'wslu-social-login');?>
@@ -187,7 +188,7 @@ if($message_provider == 'show'){?>
 										<div class="setting-label-wraper">
 											<label class="setting-label" for="<?php echo $keyTypeAll;?>_appid"><?php echo __('App ID - <em>(Required)</em>', 'wslu-social-login');?> </label>
 										</div>
-										<input placeholder="7418884555955744" name="xs_social[<?php echo $keyTypeAll;?>][id]" type="text" id="<?php echo $keyTypeAll;?>_appid" value="<?php echo esc_html(isset($return_data[$keyTypeAll]['id']) ? $return_data[$keyTypeAll]['id'] : '');?>" class="regular-text">
+										<input placeholder="741888455955744" name="xs_social[<?php echo $keyTypeAll;?>][id]" type="text" id="<?php echo $keyTypeAll;?>_appid" value="<?php echo esc_html(isset($return_data[$keyTypeAll]['id']) ? $return_data[$keyTypeAll]['id'] : '');?>" class="regular-text">
 										</th>
 									</tr>
 									<tr>
@@ -195,7 +196,7 @@ if($message_provider == 'show'){?>
 										<div class="setting-label-wraper">
 											<label class="setting-label" for="<?php echo $keyTypeAll;?>_secret"><?php echo __('App Secret - <em>(Required)</em>', 'wslu-social-login');?></label>
 										</div>
-										<input placeholder="32fd74bcaacf588c4572946sef201eee8e" name="xs_social[<?php echo $keyTypeAll;?>][secret]" type="text" id="<?php echo $keyTypeAll;?>_secret" value="<?php echo esc_html(isset($return_data[$keyTypeAll]['secret']) ? $return_data[$keyTypeAll]['secret'] : '');?>" class="regular-text"></th>
+										<input placeholder="32fd74bcaacf588c4572946f201eee8e" name="xs_social[<?php echo $keyTypeAll;?>][secret]" type="text" id="<?php echo $keyTypeAll;?>_secret" value="<?php echo esc_html(isset($return_data[$keyTypeAll]['secret']) ? $return_data[$keyTypeAll]['secret'] : '');?>" class="regular-text"></th>
 									</tr>
 								</tbody>
 							</table>

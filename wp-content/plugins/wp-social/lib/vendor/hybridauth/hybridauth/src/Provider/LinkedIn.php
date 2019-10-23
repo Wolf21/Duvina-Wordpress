@@ -20,12 +20,12 @@ class LinkedIn extends OAuth2
     /**
      * {@inheritdoc}
      */
-    public $scope = 'r_basicprofile r_emailaddress w_share';
+    public $scope = 'r_liteprofile r_emailaddress w_member_social';
 
     /**
      * {@inheritdoc}
      */
-    protected $apiBaseUrl = 'https://api.linkedin.com/v1/';
+    protected $apiBaseUrl = 'https://api.linkedin.com/v2/';
 
     /**
      * {@inheritdoc}
@@ -48,24 +48,18 @@ class LinkedIn extends OAuth2
     public function getUserProfile()
     {
         $fields = [
-            'id',
-            'email-address',
-            'first-name',
-            'last-name',
-            'headline',
-            'location',
-            'industry',
-            'picture-url',
-            'public-profile-url',
-            'num-connections',
+            "id",
+            "firstName",
+            "lastName",
+            "profilePicture(displayImage~:playableStreams)",
         ];
 
-        if ($this->config->get('photo_size') === 'original') {
-            $fields[] = 'picture-urls::(original)';
-        }
 
-        $response = $this->apiRequest('people/~:(' . implode(',', $fields) . ')', 'GET', ['format' => 'json']);
+        $response = $this->apiRequest('me?projection=(' . implode(',', $fields) . ')');
         $data     = new Data\Collection($response);
+		
+        //$response = $this->apiRequest('people/~:(' . implode(',', $fields) . ')', 'GET', ['format' => 'json']);
+        // $data     = new Data\Collection($response);
 
         if (!$data->exists('id')) {
             throw new UnexpectedApiResponseException('Provider API returned an unexpected response.');
@@ -74,26 +68,15 @@ class LinkedIn extends OAuth2
         $userProfile = new User\Profile();
 
         $userProfile->identifier  = $data->get('id');
-        $userProfile->firstName   = $data->get('firstName');
-        $userProfile->lastName    = $data->get('lastName');
-        $userProfile->photoURL    = $data->get('pictureUrl');
-        $userProfile->profileURL  = $data->get('publicProfileUrl');
-        $userProfile->email       = $data->get('emailAddress');
-        $userProfile->description = $data->get('headline');
-        $userProfile->country     = $data->filter('location')->get('name');
+        $userProfile->firstName   = $data->filter('firstName')->filter('localized')->get('en_US');
+        $userProfile->lastName    = $data->filter('lastName')->filter('localized')->get('en_US');
+        $userProfile->photoURL    = $this->getUserPhotoUrl($data->filter('profilePicture')->filter('displayImage~')->get('elements'));
+        $userProfile->email       = $this->getUserEmail();
 
-        if ($this->config->get('photo_size') === 'original') {
-            $originals = $data->get('pictureUrls');
-            if (!empty($originals->values)) {
-                $userProfile->photoURL = $originals->values[0];
-            }
-        }
 
         $userProfile->emailVerified = $userProfile->email;
 
         $userProfile->displayName = trim($userProfile->firstName . ' ' . $userProfile->lastName);
-
-        $userProfile->data['connections'] = $data->get('numConnections');
 
         return $userProfile;
     }

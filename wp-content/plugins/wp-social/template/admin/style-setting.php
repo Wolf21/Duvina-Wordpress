@@ -10,10 +10,10 @@ if($message_provider == 'show'){?>
 <?php }?>
 
 <div class="xs-style-section">
-	<h1 class="ekit_section-title"><?php echo esc_html__('Style Settings', 'wslu-social-login');?></h1>
+	<h1 class="ekit_section-title"><?php echo esc_html__('Login Style Settings', 'wslu-social-login');?></h1>
 </div>
 
-<form action="<?php echo esc_url(admin_url().'admin.php?page=wslu_style_setting');?>" name="xs_style_submit_form" method="post" id="xs_style_form">
+<form action="<?php echo esc_url(admin_url().'admin.php?page=wslu_global_setting&tab=wslu_style_setting');?>" name="xs_style_submit_form" method="post" id="xs_style_form">
 	<div class="xs-social-block-wraper">
         <div class="xs-global-section">
             <table class="form-table">

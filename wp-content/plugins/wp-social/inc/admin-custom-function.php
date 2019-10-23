@@ -28,7 +28,7 @@ if(isset($_GET['loggedout']) AND isset($_GET['XScurrentPageLog'])){
 */
 if(!function_exists('xs_services_provider')){
 	function xs_services_provider(){
-		return ['facebook' => 'Facebook', 'linkedin' => 'LinkedIn', 'twitter' => 'Twitter', 'dribbble' => 'Dribbble', 'instagram' => 'Instagram', 'github' => 'GitHub', 'wordpress' => 'WordPress', 'vkontakte' => 'Vkontakte', 'reddit' => 'Reddit'];
+		return ['facebook' => 'Facebook', 'google' => 'Google', 'linkedin' => 'LinkedIn', 'twitter' => 'Twitter', 'dribbble' => 'Dribbble', 'instagram' => 'Instagram', 'github' => 'GitHub', 'wordpress' => 'WordPress', 'vkontakte' => 'Vkontakte', 'reddit' => 'Reddit'];
 	}
 }
 
@@ -130,6 +130,7 @@ if(!function_exists('xs_my_login_stylesheet')){
 if(!function_exists('xs_my_global_stylesheet')){
 	function xs_my_global_stylesheet() {
 		wp_enqueue_style( 'xs_login_custom_login_css', WSLU_LOGIN_PLUGIN_URL. 'assets/css/login-page/font-login-page.css');
+		wp_enqueue_style( 'xs_login_font_login_css', WSLU_LOGIN_PLUGIN_URL. 'assets/css/font-icon.css');
 	}
 }
 

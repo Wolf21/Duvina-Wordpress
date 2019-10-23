@@ -20,26 +20,6 @@ if($message_global == 'show'){?>
 			<table class="form-table">
 				<tbody>
 					<!-- Redirect custom URL-->
-					<!--
-					<?php
-						$addClassRole = '';
-						$registerEnable = isset($membership)? $membership : '-1';
-						if(in_array($registerEnable, array('1', '-1'))){
-							$addClassRole = 'active_tr';
-						}
-					?>
-					<tr id="xs_data_tr__role" class="deactive_tr active_tr">
-						<th scope="row">
-							<label for="custom_login_url_data"><?php echo esc_html__('New User Default Role', 'wslu-social-login');?>
-							</label>
-						</th>
-						<td>
-						<select name="xs_default_role">
-							<?php wp_dropdown_roles( $wpUserRole ); ?>
-						</select>
-						</td>
-					</tr>-->
-
 					<tr>
 						<th scope="row">
 							<label for=""><?php echo esc_html__('Custom login redirect ', 'wslu-social-login');?>
@@ -52,7 +32,7 @@ if($message_global == 'show'){?>
 					</tr>
 					<tr id="xs_data_tr__1" class="deactive_tr  <?php echo isset($return_data['custom_login_url']['enable']) ? 'active_tr' : '';?>">
 						<th scope="row">
-							<label for="custom_login_url_data"><?php echo esc_html__('', 'wslu-social-login');?>
+							<label for="custom_login_url_data"><?php echo'';?>
 							</label>
 						</th>
 						<td>
@@ -128,6 +108,69 @@ if($message_global == 'show'){?>
 							<label class="xs_label_wp_login" for="wp_register_page_data__register_footer">
 								<input type="radio" id="wp_register_page_data__register_footer" name="xs_global[wp_register_page][data]" value="register_footer" <?php echo (isset($return_data['wp_register_page']['data']) && $return_data['wp_register_page']['data'] == 'register_footer') ? 'checked' : ''; ?>>
 								<?php echo esc_html__('wp register footer ', 'wslu-social-login')?>
+							</label>
+							<br/>
+						</td>
+					</tr>
+					<!-- fundrasing -->
+					<tr>
+						<th scope="row">
+							<label for=""><?php echo esc_html__('Show button to wfp-fundrasing login page ', 'wslu-social-login');?>
+							</label>
+						</th>
+						<td>
+							<input class="social_switch_button" type="checkbox" id="wfp_register_page_data_enable" name="xs_global[wfp_fund_login_page][enable]" value="1" <?php echo (isset($return_data['wfp_fund_login_page']['enable']) && $return_data['wfp_fund_login_page']['enable'] == 1) ? 'checked' : ''; ?> >
+							<label for="wfp_register_page_data_enable" onclick="<?php echo esc_js( 'xs_show_hide(33);' ); ?>"  class="social_switch_button_label"> <?php echo __('Enable ', 'wslu-social-login')?></label>
+						</td>
+					</tr>
+					<tr id="xs_data_tr__33" class="deactive_tr  <?php echo isset($return_data['wfp_fund_login_page']['enable']) ? 'active_tr' : '';?>">
+						<th scope="row">
+
+						</th>
+						<td>
+							<label class="xs_label_wp_login" for="wfp_register_page_data__wfp_form_outer_before">
+								<input type="radio" id="wfp_register_page_data__wfp_form_outer_before" name="xs_global[wfp_fund_login_page][data]" value="wfp_login_form_before_outer" <?php echo (isset($return_data['wfp_fund_login_page']['data']) && $return_data['wfp_fund_login_page']['data'] == 'wfp_login_form_before_outer') ? 'checked' : 'checked'; ?>>
+								<?php echo esc_html__('wfp login form outer before ', 'wslu-social-login')?>
+							</label>
+							<br/>
+							<label class="xs_label_wp_login" for="wfp_register_page_data__wfp_form_outer_after">
+								<input type="radio" id="wfp_register_page_data__wfp_form_outer_after" name="xs_global[wfp_fund_login_page][data]" value="wfp_login_form_after_outer" <?php echo (isset($return_data['wfp_fund_login_page']['data']) && $return_data['wfp_fund_login_page']['data'] == 'wfp_login_form_after_outer') ? 'checked' : ''; ?>>
+								<?php echo esc_html__('wfp login form outer after ', 'wslu-social-login')?>
+							</label>
+							<br/>
+							<label class="xs_label_wp_login" for="wfp_register_page_data__wfp_form_inner_before">
+								<input type="radio" id="wfp_register_page_data__wfp_form_inner_before" name="xs_global[wfp_fund_login_page][data]" value="wfp_login_form_before_inner" <?php echo (isset($return_data['wfp_fund_login_page']['data']) && $return_data['wfp_fund_login_page']['data'] == 'wfp_login_form_before_inner') ? 'checked' : ''; ?>>
+								<?php echo esc_html__('wfp login form inner before ', 'wslu-social-login')?>
+							</label>
+							<br/>
+							<label class="xs_label_wp_login" for="wfp_register_page_data__wfp_form_inner_after">
+								<input type="radio" id="wfp_register_page_data__wfp_form_inner_after" name="xs_global[wfp_fund_login_page][data]" value="wfp_login_form_after_inner" <?php echo (isset($return_data['wfp_fund_login_page']['data']) && $return_data['wfp_fund_login_page']['data'] == 'wfp_login_form_after_inner') ? 'checked' : ''; ?>>
+								<?php echo esc_html__('wfp login form inner after ', 'wslu-social-login')?>
+							</label>
+							<br/>
+							<label class="xs_label_wp_login" for="wfp_register_page_data__wfp_login_form_start">
+								<input type="radio" id="wfp_register_page_data__wfp_login_form_start" name="xs_global[wfp_fund_login_page][data]" value="wfp_login_form_start" <?php echo (isset($return_data['wfp_fund_login_page']['data']) && $return_data['wfp_fund_login_page']['data'] == 'wfp_login_form_start') ? 'checked' : ''; ?>>
+								<?php echo esc_html__('wfp login form start ', 'wslu-social-login')?>
+							</label>
+							<br/>
+							<label class="xs_label_wp_login" for="wfp_register_page_data__wfp_login_form_end">
+								<input type="radio" id="wfp_register_page_data__wfp_login_form_end" name="xs_global[wfp_fund_login_page][data]" value="wfp_login_form_end" <?php echo (isset($return_data['wfp_fund_login_page']['data']) && $return_data['wfp_fund_login_page']['data'] == 'wfp_login_form_end') ? 'checked' : ''; ?>>
+								<?php echo esc_html__('wfp login form end ', 'wslu-social-login')?>
+							</label>
+							<br/>
+							<label class="xs_label_wp_login" for="wfp_register_page_data__wfp_login_form_button_before">
+								<input type="radio" id="wfp_register_page_data__wfp_login_form_button_before" name="xs_global[wfp_fund_login_page][data]" value="wfp_login_form_button_before" <?php echo (isset($return_data['wfp_fund_login_page']['data']) && $return_data['wfp_fund_login_page']['data'] == 'wfp_login_form_button_before') ? 'checked' : ''; ?>>
+								<?php echo esc_html__('wfp login form button before ', 'wslu-social-login')?>
+							</label>
+							<br/>
+							<label class="xs_label_wp_login" for="wfp_register_page_data__wfp_login_form_button_after">
+								<input type="radio" id="wfp_register_page_data__wfp_login_form_button_after" name="xs_global[wfp_fund_login_page][data]" value="wfp_login_form_button_after" <?php echo (isset($return_data['wfp_fund_login_page']['data']) && $return_data['wfp_fund_login_page']['data'] == 'wfp_login_form_button_after') ? 'checked' : ''; ?>>
+								<?php echo esc_html__('wfp login form button after ', 'wslu-social-login')?>
+							</label>
+							<br/>
+							<label class="xs_label_wp_login" for="wfp_register_page_data__wfp_login_form_message">
+								<input type="radio" id="wfp_register_page_data__wfp_login_form_message" name="xs_global[wfp_fund_login_page][data]" value="wfp_login_form_message" <?php echo (isset($return_data['wfp_fund_login_page']['data']) && $return_data['wfp_fund_login_page']['data'] == 'wfp_login_form_message') ? 'checked' : ''; ?>>
+								<?php echo esc_html__('wfp login form message ', 'wslu-social-login')?>
 							</label>
 							<br/>
 						</td>
@@ -301,6 +344,18 @@ if($message_global == 'show'){?>
 						</td>
 					</tr>
 
+					
+
+
+					<!-- Save change section-->
+					<tr>
+						<th >
+						</th>
+						<td>
+							<button type="submit" name="global_setting_submit_form" class="xs-btn btn-special small"><?php echo esc_html__('Save');?></button>
+						</td>
+					</tr>
+					
 					<tr>
 						<th>
 							<label for=""><?php echo esc_html__('Shortcode ', 'wslu-social-login');?>
@@ -315,16 +370,6 @@ if($message_global == 'show'){?>
 									<li>[xs_social_login provider="facebook" class="custom-class" btn-text="Button Text"]</li>
 								</ol>
 							</div>
-						</td>
-					</tr>
-
-
-					<!-- Save change section-->
-					<tr>
-						<th >
-						</th>
-						<td>
-							<button type="submit" name="global_setting_submit_form" class="xs-btn btn-special small"><?php echo esc_html__('Save');?></button>
 						</td>
 					</tr>
 				</tbody>

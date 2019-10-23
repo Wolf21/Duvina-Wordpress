@@ -18,10 +18,7 @@ $className = 'xs-login-global xs-login-'.$buttonStyle.'';
 				if(isset($provider_data[$keyType]['enable']) ? $provider_data[$keyType]['enable'] : 0):
 					if(in_array($keyType, $attr) OR in_array('all', $attr)){
 						$btn_text = isset($provider_data[$keyType]['login_label']) ? $provider_data[$keyType]['login_label'] : 'Login with <b>'.$valueType.'</b>';
-						if(strlen(trim($btn_content)) > 0){
-							$btn_text = $btn_content;
-						}
-
+						
 						?>
 						<li class="<?php echo  esc_attr('xs-li-'.$buttonStyle.' '.$keyType); ?>">
 							<a href="<?php echo esc_url(get_site_url().'/wp-json/wslu-social-login/type/'.$keyType.''.$correntUrl); ?>">

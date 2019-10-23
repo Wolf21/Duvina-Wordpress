@@ -10,10 +10,11 @@ namespace Automattic\WooCommerce\Admin;
 defined( 'ABSPATH' ) || exit;
 
 use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes;
+use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Facebook_Extension;
 use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Historical_Data;
 use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Order_Milestones;
 use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Welcome_Message;
-use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Woo_Subscriptions_Notes;;
+use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Woo_Subscriptions_Notes;
 
 /**
  * Feature plugin main class.
@@ -85,6 +86,7 @@ class FeaturePlugin {
 		ReportsSync::clear_queued_actions();
 		WC_Admin_Notes::clear_queued_actions();
 		wp_clear_scheduled_hook( 'wc_admin_daily' );
+		wp_clear_scheduled_hook( 'generate_category_lookup_table' );
 	}
 
 	/**
@@ -117,11 +119,10 @@ class FeaturePlugin {
 		$this->define( 'WC_ADMIN_ABSPATH', dirname( __DIR__ ) . '/' );
 		$this->define( 'WC_ADMIN_DIST_JS_FOLDER', 'dist/' );
 		$this->define( 'WC_ADMIN_DIST_CSS_FOLDER', 'dist/' );
-		$this->define( 'WC_ADMIN_FEATURES_PATH', WC_ADMIN_ABSPATH . 'includes/features/' );
 		$this->define( 'WC_ADMIN_PLUGIN_FILE', WC_ADMIN_ABSPATH . 'woocommerce-admin.php' );
 		// WARNING: Do not directly edit this version number constant.
 		// It is updated as part of the prebuild process from the package.json value.
-		$this->define( 'WC_ADMIN_VERSION_NUMBER', '0.17.0' );
+		$this->define( 'WC_ADMIN_VERSION_NUMBER', '0.20.1' );
 	}
 
 	/**
@@ -145,12 +146,16 @@ class FeaturePlugin {
 		// CRUD classes.
 		WC_Admin_Notes::init();
 
+		// Initialize category lookup.
+		CategoryLookup::instance()->init();
+
 		// Admin note providers.
 		// @todo These should be bundled in the features/ folder, but loading them from there currently has a load order issue.
 		new WC_Admin_Notes_Woo_Subscriptions_Notes();
 		new WC_Admin_Notes_Historical_Data();
 		new WC_Admin_Notes_Order_Milestones();
 		new WC_Admin_Notes_Welcome_Message();
+		new WC_Admin_Notes_Facebook_Extension();
 	}
 
 	/**
@@ -162,6 +167,11 @@ class FeaturePlugin {
 	public function replace_actionscheduler_store_class( $store_class ) {
 		// Don't override any other overrides.
 		if ( 'ActionScheduler_wpPostStore' !== $store_class ) {
+			return $store_class;
+		}
+
+		// Don't override if action scheduler is 3.0.0 or greater.
+		if ( version_compare( \ActionScheduler_Versions::instance()->latest_version(), '3.0', '>=' ) ) {
 			return $store_class;
 		}
 
